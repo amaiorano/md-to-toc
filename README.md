@@ -4,10 +4,11 @@ md-to-toc is a python script that parses a markdown file and outputs a table of 
 
 Advantages:
 - Doesn't require an internet connection
+- Works on any markdown file (doesn't need to be on a public GitHub repo)
 - Fast
 
 Disadvantages:
-- Uses my best guess at GitHub's algorithm to determine anchor names for header strings. Works for my user cases, but may not cover all cases.
+- Uses my best guess at GitHub's algorithm to determine anchor names for header strings. Works for my use cases, but may not cover all cases. If it doesn't work for you, please let me know!
 
 
 ## Usage ##
