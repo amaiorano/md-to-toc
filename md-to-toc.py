@@ -28,7 +28,7 @@ def to_github_anchor(title):
     anchor_name = title.strip().lower().replace(' ', '-')
 
     # Strip all invalid characters
-    anchor_name = re.sub("[^A-Za-z0-9\-_]", "", anchor_name)
+    anchor_name = re.sub("[\]\[\!\"\#\$\%\&\'\(\)\*\+\,\.\/\:\;\<\=\>\?\@\\\^\_\{\|\}\~]", "", anchor_name)
 
     # If we've encountered this anchor name before, append next instance count
     count = anchors.get(anchor_name)
