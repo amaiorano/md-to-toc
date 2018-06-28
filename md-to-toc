@@ -3,12 +3,20 @@
 INPUT=$1
 OUTPUT=$2
 
+#If user doesn't enter an argument (or uses "--help") print syntax example and exit script
 if [ "$1" == "--help" ] || [ -z $INPUT ] || [ -z $OUTPUT ]; then
   echo "Usage: md-to-toc INPUT_FILE OUTPUT_FILE"
   exit 0
 fi
 
+#Prepare temp file with h2 that says "Table of Contents"
 echo "##Table of Contents" > tmp
+
+#Append python script output (the actual table of contents) to temp file
 python md-to-toc.py $INPUT >> tmp
+
+#Create output file, formed by appending input file to temp file
 cat tmp $INPUT > $OUTPUT
+
+#Clean up temp file
 rm tmp
