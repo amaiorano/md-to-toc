@@ -1,0 +1,14 @@
+#!/bin/bash
+
+INPUT=$1
+OUTPUT=$2
+
+if [ "$1" == "--help" ] || [ -z $INPUT ] || [ -z $OUTPUT ]; then
+  echo "Usage: md-to-toc INPUT_FILE OUTPUT_FILE"
+  exit 0
+fi
+
+echo "##Table of Contents" > tmp
+python md-to-toc.py $INPUT >> tmp
+cat tmp $INPUT > $OUTPUT
+rm tmp
