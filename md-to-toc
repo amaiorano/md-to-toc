@@ -14,7 +14,7 @@ fi
 echo "##Table of Contents" > tmp
 
 #Append python script output (the actual table of contents) to temp file
-python md-to-toc.py $INPUT >> tmp
+md-to-toc.py $INPUT >> tmp
 
 #If no second argument given, then overwrite the INPUT file with the results, clean up, and exit
 if [ -z $OUTPUT ]; then

@@ -1,3 +1,4 @@
+#!/usr/bin/python
 # Author: Antonio Maiorano (amaiorano@gmail.com)
 
 import sys
