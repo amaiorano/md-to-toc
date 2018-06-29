@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
+#First argument is input filename, optional second argument is output filename
 INPUT=$1
 OUTPUT=$2
 
-#If user doesn't enter an argument (or uses "--help") print syntax example and exit script
-if [ "$1" == "--help" ] || [ -z $INPUT ] || [ -z $OUTPUT ]; then
-  echo "Usage: md-to-toc INPUT_FILE OUTPUT_FILE"
+#If user doesn't enter any arguments (or uses "--help"), then print syntax example and exit script
+if [ "$1" == "--help" ] || [ -z $INPUT ]; then
+  echo "Usage: md-to-toc INPUT_FILE (optional: OUTPUT_FILE)"
   exit 0
 fi
 
@@ -15,8 +16,17 @@ echo "##Table of Contents" > tmp
 #Append python script output (the actual table of contents) to temp file
 python md-to-toc.py $INPUT >> tmp
 
-#Create output file, formed by appending input file to temp file
-cat tmp $INPUT > $OUTPUT
+#If no second argument given, then overwrite the INPUT file with the results, clean up, and exit
+if [ -z $OUTPUT ]; then
+  cat $INPUT >> tmp
+  cat tmp > $INPUT
+  rm tmp
+  exit 0
 
-#Clean up temp file
-rm tmp
+#Otherwise write the results to OUTPUT file, clean up, and exit
+else
+  touch $OUTPUT
+  cat tmp $INPUT > $OUTPUT
+  rm tmp
+  exit 0
+fi
