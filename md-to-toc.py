@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 # Author: Antonio Maiorano (amaiorano@gmail.com)
 
 import sys
